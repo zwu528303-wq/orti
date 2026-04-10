@@ -1,0 +1,30 @@
+{
+  "landing": {
+    "title": "你是哪首 Olivia Rodrigo？",
+    "subtitle": "Which Olivia Rodrigo song are you?",
+    "hook": "一套写给 Olivia 听众的情绪测量装置，不急着给你定义，只想帮你找到更像你的那首歌。",
+    "cta": "开始测试",
+    "meta": "17 questions · 约 3 分钟",
+    "draftHint": "你上次做到 Q.{num}",
+    "resumeQuiz": "继续测试",
+    "discardDraft": "重新开始",
+    "lastResult": "上次你测到的是《{songName}》",
+    "viewLast": "查看上次结果",
+    "restart": "重新开始"
+  },
+  "quiz": {
+    "progress": "{current} / {total}",
+    "questionLabel": "Question {num}",
+    "back": "上一题"
+  },
+  "result": {
+    "header": "你的 Olivia 人格切片",
+    "stageLabel": "你的 Olivia 时期",
+    "copyLink": "复制结果链接",
+    "copyLinkSuccess": "链接已复制",
+    "copyLinkError": "复制失败，请手动复制",
+    "neteaseButton": "♫ 在网易云音乐听这首歌",
+    "retake": "重新测一次",
+    "disclaimer": "本网站为非盈利的粉丝创作..."
+  }
+}
