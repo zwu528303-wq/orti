@@ -44,7 +44,7 @@ export function QuizExperience() {
   const restoredRef = useRef(false);
   const startedRef = useRef(false);
   const [isLocked, setIsLocked] = useState(false);
-  const { answers, currentQuestion, loadQuizState, resetQuiz, setAnswer, setCurrentQuestion } =
+  const { answers, currentQuestion, loadQuizState, setAnswer, setCurrentQuestion } =
     useQuizContext();
 
   useEffect(() => {
@@ -124,7 +124,6 @@ export function QuizExperience() {
           stage: spectrumStage,
           slot: spectrumCopy.slot,
         });
-        resetQuiz();
         startTransition(() => {
           router.push(buildResultHref(result));
         });

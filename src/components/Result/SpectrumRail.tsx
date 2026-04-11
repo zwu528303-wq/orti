@@ -10,7 +10,8 @@ const slots: Array<1 | 2 | 3 | 4 | 5> = [1, 2, 3, 4, 5];
 export function SpectrumRail({ activeSlot }: SpectrumRailProps) {
   return (
     <div className="relative grid h-full min-h-[34rem] grid-rows-5 items-center">
-      <div className="absolute left-[2.2rem] top-10 bottom-10 w-px bg-accent-light/70" />
+      <div className="absolute left-[2.12rem] top-10 bottom-[3.65rem] w-[3px] rounded-full bg-accent-primary shadow-[0_0_0_4px_rgba(212,165,232,0.2)]" />
+      <span className="absolute left-[1.58rem] bottom-4 h-0 w-0 border-l-[12px] border-r-[12px] border-t-[18px] border-l-transparent border-r-transparent border-t-accent-primary drop-shadow-[0_6px_12px_rgba(107,45,140,0.34)]" />
 
       {slots.map((slot) => {
         const era = eras.find((item) => item.anchorSlot === slot);

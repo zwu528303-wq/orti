@@ -2,7 +2,21 @@ import fs from "node:fs";
 import path from "node:path";
 
 const rootDir = process.cwd();
-const sourcePath = path.join(rootDir, "orti-questions-v1.md");
+const sourceArg = process.argv[2];
+const sourceCandidates = sourceArg
+  ? [sourceArg]
+  : ["orti-questions-v2-final.md", "orti-questions-v1.md"];
+const sourceRelativePath = sourceCandidates.find((candidate) =>
+  fs.existsSync(path.join(rootDir, candidate)),
+);
+
+if (!sourceRelativePath) {
+  throw new Error(
+    `Unable to find a question source. Checked: ${sourceCandidates.join(", ")}`,
+  );
+}
+
+const sourcePath = path.join(rootDir, sourceRelativePath);
 const outputPath = path.join(rootDir, "src/data/questions.ts");
 
 const scoreKeys = ["d1", "d2", "d3", "d4", "d5", "d6", "d7"];
@@ -84,7 +98,7 @@ function parseQuestions(markdown) {
     }
 
     const [, idText, category] = headerMatch;
-    const questionMatch = trimmedBlock.match(/\*\*(.+?)\*\*\n\*(.+?)\*/s);
+    const questionMatch = trimmedBlock.match(/\*\*(.+?)\*\*\s*\n\s*\*(.+?)\*/s);
 
     if (!questionMatch) {
       throw new Error(`Unable to parse question copy: ${header}`);
@@ -93,7 +107,7 @@ function parseQuestions(markdown) {
     const [, questionZh, questionEn] = questionMatch;
 
     const optionPattern =
-      /\*\*([A-D])\.\s(.+?)\*\*\n\*(.+?)\*\n((?:- .+\n?)*)/g;
+      /\*\*([A-D])\.\*\*\s+(.+?)\s*\n\*(.+?)\*\s*\n((?:- .+\n?)*)/g;
     const options = [];
 
     for (const optionMatch of trimmedBlock.matchAll(optionPattern)) {
@@ -172,4 +186,6 @@ export const questions: Question[] = ${JSON.stringify(questions, null, 2)};
 `;
 
 fs.writeFileSync(outputPath, fileContents, "utf8");
-console.log(`Generated ${questions.length} questions into ${path.relative(rootDir, outputPath)}.`);
+console.log(
+  `Generated ${questions.length} questions from ${sourceRelativePath} into ${path.relative(rootDir, outputPath)}.`,
+);

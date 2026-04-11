@@ -17,12 +17,9 @@ export function SongCard({ song, stage }: SongCardProps) {
 
   return (
     <section className="surface-card overflow-hidden px-5 py-5 sm:px-6 sm:py-6">
-      <div className="flex items-start justify-between gap-4">
-        <div className="space-y-2">
-          <Wordmark size="watermark" tone="secondary" />
-          <p className="eyebrow">Olivia type file</p>
-        </div>
-        <span className="info-chip shrink-0">{song.album}</span>
+      <div className="space-y-2">
+        <Wordmark size="watermark" tone="secondary" />
+        <p className="eyebrow">Olivia type file</p>
       </div>
 
       <div className="mt-6 grid grid-cols-[5.35rem_minmax(0,1fr)] gap-5 sm:grid-cols-[6.1rem_minmax(0,1fr)] sm:gap-6">

@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useParams, useRouter, useSearchParams } from "next/navigation";
 
 import { SongCard } from "@/components/Result/SongCard";
@@ -68,6 +68,10 @@ export function ResultExperience() {
 
     return resolveStage(searchParams.get("stage"), song);
   }, [searchParams, song]);
+
+  useEffect(() => {
+    resetQuiz();
+  }, [resetQuiz]);
 
   if (!song) {
     return (
@@ -139,10 +143,6 @@ export function ResultExperience() {
             {zh.result.retake}
           </Button>
         </div>
-
-        <p className="text-sm leading-7 text-text-secondary">
-          这一块不参与截图，它是结果页外层的操作区。你后面把真实网易云链接和结果文案给我后，我会直接接进这里和上面的主卡片。
-        </p>
 
         {copyStatus === "success" ? (
           <p className="text-sm text-text-secondary">
