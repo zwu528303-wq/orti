@@ -34,7 +34,7 @@ export function SongCard({ song, stage }: SongCardProps) {
           </div>
 
           <div className="mt-7">
-            <p className="text-[clamp(2.7rem,9vw,3.6rem)] leading-[0.98] text-text-primary">
+            <p className="text-[clamp(2.2rem,7.2vw,3rem)] leading-[1.02] text-text-primary">
               {song.titleEn}
             </p>
             <div className="mt-4 flex flex-wrap items-center gap-2.5 text-sm italic tracking-[0.05em] text-text-secondary">
