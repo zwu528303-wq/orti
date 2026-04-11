@@ -7,9 +7,9 @@ type WordmarkProps = {
 };
 
 const sizeStyles: Record<NonNullable<WordmarkProps["size"]>, string> = {
-  hero: "text-[clamp(3.25rem,8vw,4rem)]",
-  small: "text-base",
-  watermark: "text-sm",
+  hero: "text-[clamp(3.7rem,12vw,5rem)]",
+  small: "text-[0.92rem]",
+  watermark: "text-[0.78rem]",
 };
 
 const toneStyles: Record<NonNullable<WordmarkProps["tone"]>, string> = {
@@ -25,7 +25,7 @@ export function Wordmark({
   return (
     <span
       className={cn(
-        "font-serif font-normal uppercase tracking-[0.15em]",
+        "font-brand font-normal uppercase leading-none tracking-[0.08em]",
         sizeStyles[size],
         toneStyles[tone],
         className,

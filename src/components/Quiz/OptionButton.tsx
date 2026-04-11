@@ -20,34 +20,36 @@ export function OptionButton({
   return (
     <button
       className={cn(
-        "surface-card w-full p-5 text-left transition-all duration-200 ease-out",
-        "hover:-translate-y-0.5 hover:border-accent-light hover:shadow-cardHover",
+        "w-full rounded-[20px] border border-border-soft bg-bg-card px-5 py-5 text-left shadow-card transition-all duration-200 ease-out",
+        "hover:-translate-y-0.5 hover:border-accent-primary hover:bg-bg-tint hover:shadow-cardHover",
         "disabled:cursor-not-allowed disabled:opacity-70",
-        isSelected && "border-accent-primary bg-accent-primary text-text-onDark",
+        isSelected && "border-accent-primary bg-bg-quote shadow-cardHover",
       )}
       disabled={disabled}
       onClick={onSelect}
       type="button"
     >
-      <p
-        className={cn(
-          "text-xs uppercase tracking-[0.18em]",
-          isSelected ? "text-text-onDark/80" : "text-accent-light",
-        )}
-      >
-        {label}
-      </p>
-      <p className="mt-3 text-base leading-7">{textZh}</p>
-      {textEn ? (
-        <p
+      <div className="flex gap-4">
+        <span
           className={cn(
-            "mt-2 text-sm italic leading-6",
-            isSelected ? "text-text-onDark/80" : "text-text-secondary",
+            "mt-0.5 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full border text-[0.72rem] uppercase tracking-[0.18em] transition-colors duration-200",
+            isSelected
+              ? "border-accent-primary bg-accent-primary text-text-onDark"
+              : "border-border-medium bg-bg-tint text-accent-primary",
           )}
         >
-          {textEn}
-        </p>
-      ) : null}
+          {label}
+        </span>
+
+        <div className="min-w-0 flex-1">
+          <p className="text-base leading-7 text-text-primary">{textZh}</p>
+          {textEn ? (
+            <p className="mt-2 text-sm italic leading-6 text-text-secondary">
+              {textEn}
+            </p>
+          ) : null}
+        </div>
+      </div>
     </button>
   );
 }

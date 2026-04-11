@@ -143,7 +143,7 @@ export function QuizExperience() {
   };
 
   return (
-    <main className="app-shell">
+    <main className="app-shell flex min-h-screen flex-col justify-center">
       <div
         className="transition-all duration-300 ease-out"
         key={question.id}

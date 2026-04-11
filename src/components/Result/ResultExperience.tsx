@@ -124,10 +124,10 @@ export function ResultExperience() {
   };
 
   return (
-    <main className="app-shell space-y-6">
+    <main className="app-shell space-y-5">
       <SongCard song={song} stage={stage} />
 
-      <section className="space-y-4">
+      <section className="lavender-panel space-y-4 p-5 sm:p-6">
         <div className="flex flex-wrap gap-3">
           <Button onClick={handleCopyLink} type="button" variant="ghost">
             {zh.result.copyLink}
@@ -139,6 +139,10 @@ export function ResultExperience() {
             {zh.result.retake}
           </Button>
         </div>
+
+        <p className="text-sm leading-7 text-text-secondary">
+          这一块不参与截图，它是结果页外层的操作区。你后面把真实网易云链接和结果文案给我后，我会直接接进这里和上面的主卡片。
+        </p>
 
         {copyStatus === "success" ? (
           <p className="text-sm text-text-secondary">

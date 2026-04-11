@@ -42,6 +42,7 @@ const config: Config = {
         cardHover: "var(--shadow-card-hover)",
       },
       fontFamily: {
+        brand: ["\"just-like-heaven\"", "\"Courier New\"", "Courier", "monospace"],
         serif: [
           "\"Noto Serif SC\"",
           "\"Source Han Serif SC\"",
@@ -52,7 +53,7 @@ const config: Config = {
         ],
       },
       maxWidth: {
-        content: "480px",
+        content: "560px",
       },
     },
   },

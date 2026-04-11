@@ -15,6 +15,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="zh-CN">
+      <head>
+        <link
+          href="https://cdn.rhythm.umgapps.com/fonts/family/just-like-heaven/stylesheet.css"
+          rel="stylesheet"
+        />
+      </head>
       <body>
         <Providers>{children}</Providers>
       </body>

@@ -8,15 +8,18 @@ export function ProgressBar({ current, total }: ProgressBarProps) {
 
   return (
     <div className="space-y-3">
-      <div className="h-px w-full overflow-hidden rounded-full bg-accent-light/30">
+      <div className="flex items-center justify-between gap-4 text-[0.72rem] uppercase tracking-[0.18em] text-text-secondary">
+        <span>Progress</span>
+        <span>
+          {String(current).padStart(2, "0")} / {String(total).padStart(2, "0")}
+        </span>
+      </div>
+      <div className="h-2 w-full overflow-hidden rounded-full bg-accent-light/35">
         <div
-          className="h-full bg-accent-primary transition-all duration-500 ease-out"
+          className="h-full rounded-full bg-accent-primary transition-all duration-500 ease-out"
           style={{ width: `${progress}%` }}
         />
       </div>
-      <p className="text-sm text-text-secondary">
-        {String(current).padStart(2, "0")} / {String(total).padStart(2, "0")}
-      </p>
     </div>
   );
 }

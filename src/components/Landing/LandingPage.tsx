@@ -29,82 +29,105 @@ export function LandingPage() {
   const draft: QuizDraft | null = getDraft();
   const storedResult: StoredResult | null = getStoredResult();
   const lastSong = storedResult ? songsById[storedResult.songId] ?? null : null;
+  const lastResultHref = storedResult ? buildResultHref(storedResult) : null;
 
   return (
-    <main className="app-shell flex flex-col gap-10">
-      <section className="flex min-h-[50vh] flex-col items-center justify-center text-center">
-        <Wordmark />
-        <p className="mt-4 text-sm italic tracking-[0.05em] text-text-secondary">
-          Olivia Rodrigo Type Indicator
-        </p>
-        <span className="soft-divider my-6" />
-        <h1 className="max-w-[18rem] text-[1.375rem] leading-[1.35] text-text-primary">
-          {zh.landing.title}
-        </h1>
-      </section>
-
-      <section className="surface-card px-7 py-8">
-        <p className="text-base leading-8 text-text-secondary">
-          一套写给 Olivia Rodrigo 听众的情绪测量装置。17 道题，三分钟左右，最后找到更像你那一首歌。
-        </p>
-
-        <div className="mt-8 flex flex-col gap-4">
-          <Button href="/quiz">{zh.landing.cta}</Button>
-
-          {draft ? (
-            <div className="rounded-quote border border-border-soft bg-bg-tint p-5 text-left">
-              <p className="text-sm text-text-secondary">
-                {buildProgressLabel(draft)}
-              </p>
-              <div className="mt-4 flex flex-wrap gap-3">
-                <Button
-                  className="min-h-10 px-4 py-2"
-                  href="/quiz"
-                  variant="ghost"
-                >
-                  {zh.landing.resumeQuiz}
-                </Button>
-                <Button
-                  className="min-h-10 px-4 py-2"
-                  onClick={() => {
-                    clearDraft();
-                    router.push("/quiz");
-                  }}
-                  type="button"
-                  variant="ghost"
-                >
-                  {zh.landing.discardDraft}
-                </Button>
-              </div>
-            </div>
-          ) : null}
-
-          {!draft && lastSong && storedResult ? (
-            <div className="rounded-quote border border-border-soft bg-bg-tint p-5 text-left">
-              <p className="text-sm text-text-secondary">
-                {zh.landing.lastResult.replace("{songName}", lastSong.titleEn)}
-              </p>
-              <div className="mt-4 flex flex-wrap gap-3">
-                <Button
-                  className="min-h-10 px-4 py-2"
-                  href={buildResultHref(storedResult)}
-                  variant="ghost"
-                >
-                  {zh.landing.viewLast}
-                </Button>
-                <Button
-                  className="min-h-10 px-4 py-2"
-                  href="/quiz"
-                  variant="ghost"
-                >
-                  {zh.landing.restart}
-                </Button>
-              </div>
-            </div>
-          ) : null}
+    <main className="app-shell flex flex-col gap-5">
+      <section className="surface-card px-6 py-7 sm:px-8 sm:py-9">
+        <div className="space-y-3">
+          <p className="eyebrow">Olivia Rodrigo Type Indicator</p>
+          <Wordmark />
         </div>
 
-        <p className="mt-8 text-center text-sm text-text-secondary">
+        <span className="soft-divider mt-7" />
+
+        <div className="mt-7 space-y-4">
+          <h1 className="max-w-[20rem] text-[1.75rem] leading-[1.22] text-text-primary sm:text-[2rem]">
+            {zh.landing.title}
+          </h1>
+          <p className="text-sm italic leading-6 text-text-secondary">
+            {zh.landing.subtitle}
+          </p>
+        </div>
+
+        <div className="mt-8 flex flex-wrap gap-2.5">
+          <span className="info-chip">17 questions</span>
+          <span className="info-chip">3 min approx.</span>
+        </div>
+
+        <div className="mt-8">
+          <Button className="w-full sm:w-auto" href="/quiz">
+            {zh.landing.cta}
+          </Button>
+        </div>
+      </section>
+
+      <section className="grid gap-4">
+        {draft ? (
+          <div className="lavender-panel p-5 text-left sm:p-6">
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+              <div className="space-y-2">
+                <p className="eyebrow">Resume Draft</p>
+                <p className="text-sm leading-7 text-text-secondary">
+                  {buildProgressLabel(draft)}
+                </p>
+              </div>
+              <span className="info-chip">session saved</span>
+            </div>
+
+            <div className="mt-5 flex flex-wrap gap-3">
+              <Button
+                className="min-h-10 px-4 py-2"
+                href="/quiz"
+                variant="ghost"
+              >
+                {zh.landing.resumeQuiz}
+              </Button>
+              <Button
+                className="min-h-10 px-4 py-2"
+                onClick={() => {
+                  clearDraft();
+                  router.push("/quiz");
+                }}
+                type="button"
+                variant="ghost"
+              >
+                {zh.landing.discardDraft}
+              </Button>
+            </div>
+          </div>
+        ) : null}
+
+        {!draft && lastSong && storedResult && lastResultHref ? (
+          <div className="lavender-panel p-5 text-left sm:p-6">
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+              <div className="space-y-2">
+                <p className="eyebrow">Last Result</p>
+                <p className="text-sm leading-7 text-text-secondary">
+                  {zh.landing.lastResult.replace("{songName}", lastSong.titleEn)}
+                </p>
+              </div>
+              <span className="info-chip">{lastSong.album}</span>
+            </div>
+
+            <div className="mt-5 flex flex-wrap gap-3">
+              <Button
+                className="min-h-10 px-4 py-2"
+                href={lastResultHref}
+                variant="ghost"
+              >
+                {zh.landing.viewLast}
+              </Button>
+              <Button className="min-h-10 px-4 py-2" href="/quiz" variant="ghost">
+                {zh.landing.restart}
+              </Button>
+            </div>
+          </div>
+        ) : null}
+      </section>
+
+      <section className="px-1 text-center">
+        <p className="text-sm tracking-[0.08em] text-text-onDark/78">
           {zh.landing.meta} · 找到属于你的那首歌
         </p>
       </section>

@@ -17,35 +17,38 @@ export function SongCard({ song, stage }: SongCardProps) {
 
   return (
     <section className="surface-card overflow-hidden px-5 py-5 sm:px-6 sm:py-6">
-      <div className="flex items-center justify-between gap-4">
-        <Wordmark size="watermark" tone="secondary" />
-        <span className="text-[0.7rem] uppercase tracking-[0.18em] text-text-secondary">
-          your type
-        </span>
+      <div className="flex items-start justify-between gap-4">
+        <div className="space-y-2">
+          <Wordmark size="watermark" tone="secondary" />
+          <p className="eyebrow">Olivia type file</p>
+        </div>
+        <span className="info-chip shrink-0">{song.album}</span>
       </div>
 
-      <div className="mt-5 grid grid-cols-[5.5rem_minmax(0,1fr)] gap-5 sm:grid-cols-[6rem_minmax(0,1fr)]">
+      <div className="mt-6 grid grid-cols-[5.35rem_minmax(0,1fr)] gap-5 sm:grid-cols-[6.1rem_minmax(0,1fr)] sm:gap-6">
         <SpectrumRail activeSlot={spectrumCopy.slot} />
 
-        <div className="flex min-h-[28rem] flex-col">
-          <div>
-            <p className="text-sm leading-6 text-text-secondary">{spectrumCopy.zh}</p>
-            <p className="mt-1 text-xs italic leading-5 text-text-tertiary">
+        <div className="flex min-h-[34rem] flex-col">
+          <div className="border-b border-border-soft pb-5">
+            <p className="text-sm leading-7 text-text-secondary">{spectrumCopy.zh}</p>
+            <p className="mt-1 text-xs italic leading-6 text-text-tertiary">
               {spectrumCopy.en}
             </p>
           </div>
 
-          <div className="mt-8">
-            <p className="text-[clamp(2.5rem,8vw,3rem)] leading-[1.12] text-text-primary">
+          <div className="mt-7">
+            <p className="text-[clamp(2.7rem,9vw,3.6rem)] leading-[0.98] text-text-primary">
               {song.titleEn}
             </p>
-            <p className="mt-3 text-sm italic tracking-[0.05em] text-text-secondary">
-              Olivia Rodrigo · {song.album}
-            </p>
+            <div className="mt-4 flex flex-wrap items-center gap-2.5 text-sm italic tracking-[0.05em] text-text-secondary">
+              <span>Olivia Rodrigo</span>
+              <span className="h-1 w-1 rounded-full bg-accent-light" />
+              <span>{song.album}</span>
+            </div>
           </div>
 
           {shouldShowLyrics ? (
-            <div className="mt-7 rounded-quote bg-bg-quote px-4 py-4">
+            <div className="mt-7 rounded-quote border border-border-soft bg-bg-quote px-4 py-4">
               <p className="text-lg italic leading-7 text-text-primary">
                 {song.lyricsEn}
               </p>
@@ -57,17 +60,26 @@ export function SongCard({ song, stage }: SongCardProps) {
             </div>
           ) : null}
 
-          <p className="mt-7 text-base leading-8 text-text-primary">
-            {song.personalityZh}
-          </p>
+          <div className="lavender-panel mt-7 px-4 py-4">
+            <p className="eyebrow">Why this song</p>
+            <p className="mt-3 text-[0.98rem] leading-8 text-text-primary">
+              {song.personalityZh}
+            </p>
+          </div>
 
-          <p className="mt-auto pt-8 text-lg italic leading-7 text-accent-primary">
-            {song.philosophyEn}
-          </p>
+          <div className="mt-auto pt-9">
+            <span className="soft-divider" />
+            <p className="mt-5 max-w-[18rem] text-lg italic leading-7 text-accent-primary">
+              {song.philosophyEn}
+            </p>
+          </div>
         </div>
       </div>
 
-      <div className="mt-4 flex justify-end">
+      <div className="mt-5 flex items-center justify-between gap-4 border-t border-border-soft pt-4">
+        <p className="text-[0.7rem] uppercase tracking-[0.16em] text-text-tertiary">
+          screenshot-friendly layout
+        </p>
         <span className="text-xs tracking-[0.06em] text-text-tertiary">
           orti.vercel.app
         </span>
