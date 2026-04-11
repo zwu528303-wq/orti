@@ -1,5 +1,7 @@
 import { contentPolicy } from "@/config/content";
+import { songPersonalityEn } from "@/data/song-copy";
 import type { Song, SpectrumStage } from "@/data/songs";
+import type { AppLocale } from "@/lib/locale";
 import { getSpectrumCopy } from "@/lib/spectrum";
 
 import { SpectrumRail } from "@/components/Result/SpectrumRail";
@@ -8,12 +10,15 @@ import { Wordmark } from "@/components/shared/Wordmark";
 type SongCardProps = {
   song: Song;
   stage: SpectrumStage;
+  locale?: AppLocale;
 };
 
-export function SongCard({ song, stage }: SongCardProps) {
+export function SongCard({ song, stage, locale = "zh" }: SongCardProps) {
   const spectrumCopy = getSpectrumCopy(stage);
   const shouldShowLyrics =
     contentPolicy.resultQuoteMode === "lyrics" && Boolean(song.lyricsEn);
+  const personalityCopy =
+    locale === "en" ? songPersonalityEn[song.id] ?? song.personalityZh : song.personalityZh;
 
   return (
     <section className="surface-card overflow-hidden px-4 py-4 sm:px-5 sm:py-5">
@@ -27,10 +32,16 @@ export function SongCard({ song, stage }: SongCardProps) {
 
         <div className="flex min-h-[29.5rem] flex-col sm:min-h-[31rem]">
           <div className="border-b border-border-soft pb-4">
-            <p className="text-sm leading-6.5 text-text-secondary">{spectrumCopy.zh}</p>
-            <p className="mt-1 text-[0.72rem] italic leading-5 text-text-tertiary">
-              {spectrumCopy.en}
-            </p>
+            {locale === "en" ? (
+              <p className="text-sm leading-6.5 text-text-secondary">{spectrumCopy.en}</p>
+            ) : (
+              <>
+                <p className="text-sm leading-6.5 text-text-secondary">{spectrumCopy.zh}</p>
+                <p className="mt-1 text-[0.72rem] italic leading-5 text-text-tertiary">
+                  {spectrumCopy.en}
+                </p>
+              </>
+            )}
           </div>
 
           <div className="mt-5">
@@ -55,7 +66,7 @@ export function SongCard({ song, stage }: SongCardProps) {
           <div className="lavender-panel mt-5 px-4 py-3.5">
             <p className="eyebrow">Why this song</p>
             <p className="mt-2.5 text-[0.95rem] leading-7 text-text-primary">
-              {song.personalityZh}
+              {personalityCopy}
             </p>
           </div>
 

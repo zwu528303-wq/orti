@@ -1,8 +1,13 @@
 import type { Route } from "next";
 
+import type { AppLocale } from "@/lib/locale";
+import { withLocalePrefix } from "@/lib/locale";
 import type { StoredResult } from "@/lib/storage";
 
-export function buildResultHref(result: StoredResult): Route {
+export function buildResultHref(
+  result: StoredResult,
+  locale: AppLocale = "zh",
+): Route {
   const params = new URLSearchParams({
     stage: result.spectrumStage,
     d1: String(result.scores.d1),
@@ -14,5 +19,5 @@ export function buildResultHref(result: StoredResult): Route {
     d7: String(result.scores.d7),
   });
 
-  return `/result/${result.songId}?${params.toString()}` as Route;
+  return withLocalePrefix(`/result/${result.songId}?${params.toString()}`, locale);
 }

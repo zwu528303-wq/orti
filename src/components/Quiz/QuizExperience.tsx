@@ -6,6 +6,8 @@ import { useRouter } from "next/navigation";
 import { QuestionCard } from "@/components/Quiz/QuestionCard";
 import { questions } from "@/data/questions";
 import { trackEvent } from "@/lib/analytics";
+import type { AppLocale } from "@/lib/locale";
+import { saveLocalePreference } from "@/lib/locale";
 import { matchSong } from "@/lib/matchAlgorithm";
 import { buildResultHref } from "@/lib/resultUrl";
 import {
@@ -42,14 +44,21 @@ function draftAnswersToMap(draft: QuizDraft) {
   }, {});
 }
 
-export function QuizExperience() {
+type QuizExperienceProps = {
+  locale?: AppLocale;
+};
+
+export function QuizExperience({ locale = "zh" }: QuizExperienceProps) {
   const router = useRouter();
   const restoredRef = useRef(false);
   const startedRef = useRef(false);
   const [isLocked, setIsLocked] = useState(false);
-  const [language, setLanguage] = useState<QuizLanguage>(() => getQuizLanguage());
+  const [language, setLanguage] = useState<QuizLanguage>(() =>
+    locale === "en" ? "en" : getQuizLanguage(),
+  );
   const { answers, currentQuestion, loadQuizState, setAnswer, setCurrentQuestion } =
     useQuizContext();
+  const effectiveLanguage = locale === "en" ? "en" : language;
 
   useEffect(() => {
     if (restoredRef.current) {
@@ -106,47 +115,59 @@ export function QuizExperience() {
     const nextDraftAnswers = answerMapToDraftAnswers(nextAnswers);
 
     window.setTimeout(() => {
-      if (currentQuestion === QUESTION_TOTAL - 1) {
-        const spectrumStage = calculateSpectrumStage(nextDraftAnswers);
-        const { song, scores } = matchSong({
+      try {
+        if (currentQuestion === QUESTION_TOTAL - 1) {
+          const spectrumStage = calculateSpectrumStage(nextDraftAnswers);
+          const { song, scores } = matchSong({
+            answers: nextDraftAnswers,
+            spectrumStage,
+          });
+
+          const spectrumCopy = getSpectrumCopy(spectrumStage);
+          const result = {
+            songId: song.id,
+            spectrumStage,
+            scores,
+            timestamp: Date.now(),
+          };
+          const resultLocale = locale === "en" || effectiveLanguage === "en" ? "en" : "zh";
+          const resultHref = buildResultHref(result, resultLocale);
+
+          clearDraft();
+          saveResult(result);
+          trackEvent("quiz_completed", {
+            songId: song.id,
+            stage: spectrumStage,
+            slot: spectrumCopy.slot,
+          });
+          startTransition(() => {
+            router.push(resultHref);
+          });
+          return;
+        }
+
+        const nextQuestionIndex = currentQuestion + 1;
+        setCurrentQuestion(nextQuestionIndex);
+        saveDraft({
+          currentQuestion: nextQuestionIndex,
           answers: nextDraftAnswers,
-          spectrumStage,
+          updatedAt: Date.now(),
         });
-
-        const spectrumCopy = getSpectrumCopy(spectrumStage);
-        const result = {
-          songId: song.id,
-          spectrumStage,
-          scores,
-          timestamp: Date.now(),
-        };
-
-        clearDraft();
-        saveResult(result);
-        trackEvent("quiz_completed", {
-          songId: song.id,
-          stage: spectrumStage,
-          slot: spectrumCopy.slot,
-        });
-        startTransition(() => {
-          router.push(buildResultHref(result));
-        });
-        return;
+        setIsLocked(false);
+      } catch (error) {
+        console.error("Failed to continue quiz flow", error);
+        setIsLocked(false);
       }
-
-      const nextQuestionIndex = currentQuestion + 1;
-      setCurrentQuestion(nextQuestionIndex);
-      saveDraft({
-        currentQuestion: nextQuestionIndex,
-        answers: nextDraftAnswers,
-        updatedAt: Date.now(),
-      });
-      setIsLocked(false);
     }, 220);
   };
 
   const handleLanguageChange = (nextLanguage: QuizLanguage) => {
+    if (locale === "en") {
+      return;
+    }
+
     setLanguage(nextLanguage);
+    saveLocalePreference(nextLanguage);
     saveQuizLanguage(nextLanguage);
   };
 
@@ -160,12 +181,13 @@ export function QuizExperience() {
           canGoBack={currentQuestion > 0}
           current={currentQuestion + 1}
           isLocked={isLocked}
-          language={language}
+          language={effectiveLanguage}
           onBack={handleBack}
           onLanguageChange={handleLanguageChange}
           onSelect={handleSelect}
           question={question}
           selectedOptionId={selectedOptionId}
+          showLanguageToggle={locale !== "en"}
           total={QUESTION_TOTAL}
         />
       </div>

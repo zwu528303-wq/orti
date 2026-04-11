@@ -7,13 +7,15 @@ import { SongCard } from "@/components/Result/SongCard";
 import { Button } from "@/components/shared/Button";
 import { Disclaimer } from "@/components/shared/Disclaimer";
 import { contentPolicy } from "@/config/content";
+import { getDictionary } from "@/data/i18n";
 import {
   songsById,
   type Song,
   type SpectrumStage,
 } from "@/data/songs";
-import zh from "@/data/i18n/zh.json";
 import { trackEvent } from "@/lib/analytics";
+import type { AppLocale } from "@/lib/locale";
+import { withLocalePrefix } from "@/lib/locale";
 import { clearDraft, getStoredResult } from "@/lib/storage";
 import { useQuizContext } from "@/contexts/QuizContext";
 
@@ -46,11 +48,17 @@ function resolveStage(
   return song.spectrumHint ?? "heart_of_guts";
 }
 
-export function ResultExperience() {
+type ResultExperienceProps = {
+  locale?: AppLocale;
+};
+
+export function ResultExperience({ locale = "zh" }: ResultExperienceProps) {
   const params = useParams<{ songId: string }>();
   const searchParams = useSearchParams();
   const router = useRouter();
   const { resetQuiz } = useQuizContext();
+  const copy = getDictionary(locale);
+  const showNeteaseButton = locale === "zh";
   const [copyStatus, setCopyStatus] = useState<"idle" | "success" | "error">(
     "idle",
   );
@@ -77,9 +85,9 @@ export function ResultExperience() {
     return (
       <main className="app-shell flex items-center justify-center">
         <div className="surface-card w-full p-8 text-center">
-          <p className="kicker">Result not found</p>
+          <p className="kicker">{copy.result.notFoundTitle}</p>
           <p className="mt-4 text-base leading-7 text-text-secondary">
-            这个结果页还没有对应的歌曲数据。
+            {copy.result.notFoundBody}
           </p>
         </div>
       </main>
@@ -102,12 +110,12 @@ export function ResultExperience() {
     clearDraft();
     resetQuiz();
     trackEvent("retake_clicked", { fromSongId: song.id });
-    router.push("/quiz");
+    router.push(withLocalePrefix("/quiz", locale));
   };
 
   const handleOpenNetease = async () => {
     if (song.neteaseUrl === "#") {
-      setNeteaseStatus("网易云链接待补充");
+      setNeteaseStatus(copy.result.neteasePending);
       return;
     }
 
@@ -121,38 +129,40 @@ export function ResultExperience() {
 
     try {
       await navigator.clipboard.writeText(song.neteaseUrl);
-      setNeteaseStatus("链接已复制，请在浏览器打开");
+      setNeteaseStatus(copy.result.neteaseCopied);
     } catch {
-      setNeteaseStatus("无法自动打开，请手动复制链接");
+      setNeteaseStatus(copy.result.neteaseManual);
     }
   };
 
   return (
     <main className="app-shell space-y-4">
-      <SongCard song={song} stage={stage} />
+      <SongCard locale={locale} song={song} stage={stage} />
 
       <section className="lavender-panel space-y-3.5 p-4 sm:p-5">
         <div className="flex flex-wrap gap-2.5">
           <Button onClick={handleCopyLink} type="button" variant="ghost">
-            {zh.result.copyLink}
+            {copy.result.copyLink}
           </Button>
-          <Button onClick={handleOpenNetease} type="button">
-            {zh.result.neteaseButton}
-          </Button>
+          {showNeteaseButton ? (
+            <Button onClick={handleOpenNetease} type="button">
+              {copy.result.neteaseButton}
+            </Button>
+          ) : null}
           <Button onClick={handleRetake} type="button" variant="ghost">
-            {zh.result.retake}
+            {copy.result.retake}
           </Button>
         </div>
 
         {copyStatus === "success" ? (
           <p className="text-sm text-text-secondary">
-            {zh.result.copyLinkSuccess}
+            {copy.result.copyLinkSuccess}
           </p>
         ) : null}
 
         {copyStatus === "error" ? (
           <p className="text-sm text-text-secondary">
-            {zh.result.copyLinkError}
+            {copy.result.copyLinkError}
           </p>
         ) : null}
 
@@ -164,18 +174,18 @@ export function ResultExperience() {
           />
         ) : null}
 
-        {neteaseStatus ? (
+        {showNeteaseButton && neteaseStatus ? (
           <p className="text-sm text-text-secondary">{neteaseStatus}</p>
         ) : null}
 
         {contentPolicy.resultQuoteMode === "safe" ? (
           <p className="text-xs leading-6 text-text-tertiary">
-            当前结果页运行在 safe 模式，歌词区默认隐藏，方便先完成设计与版权降级版本。
+            {copy.result.safeMode}
           </p>
         ) : null}
       </section>
 
-      <Disclaimer />
+      <Disclaimer locale={locale} />
     </main>
   );
 }

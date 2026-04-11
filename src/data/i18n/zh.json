@@ -2,15 +2,20 @@
   "landing": {
     "title": "你是哪首 Olivia Rodrigo？",
     "subtitle": "Which Olivia Rodrigo song are you?",
-    "hook": "一套写给 Olivia 听众的情绪测量装置，不急着给你定义，只想帮你找到更像你的那首歌。",
     "cta": "开始测试",
     "meta": "17 questions · 约 3 分钟",
     "draftHint": "你上次做到 Q.{num}",
+    "resumeLabel": "继续上次测试",
     "resumeQuiz": "继续测试",
     "discardDraft": "重新开始",
+    "sessionSaved": "已保存",
+    "lastResultLabel": "上次结果",
     "lastResult": "上次你测到的是《{songName}》",
     "viewLast": "查看上次结果",
-    "restart": "重新开始"
+    "restart": "重新开始",
+    "questionsChip": "17 questions",
+    "durationChip": "3 min approx.",
+    "footerTagline": "找到属于你的那首歌"
   },
   "quiz": {
     "progress": "{current} / {total}",
@@ -18,13 +23,17 @@
     "back": "上一题"
   },
   "result": {
-    "header": "你的 Olivia 人格切片",
-    "stageLabel": "你的 Olivia 时期",
     "copyLink": "复制结果链接",
     "copyLinkSuccess": "链接已复制",
     "copyLinkError": "复制失败，请手动复制",
     "neteaseButton": "♫ 在网易云音乐听这首歌",
     "retake": "重新测一次",
-    "disclaimer": "本网站为非盈利的粉丝创作..."
-  }
+    "notFoundTitle": "Result not found",
+    "notFoundBody": "这个结果页还没有对应的歌曲数据。",
+    "neteasePending": "网易云链接待补充",
+    "neteaseCopied": "链接已复制，请在浏览器打开",
+    "neteaseManual": "无法自动打开，请手动复制链接",
+    "safeMode": "当前结果页运行在 safe 模式，歌词区默认隐藏，方便先完成设计与版权降级版本。"
+  },
+  "disclaimer": "本网站为非盈利的粉丝创作，与 Olivia Rodrigo 及 Geffen Records 无任何关联。所有歌名与歌词版权归原作者所有。"
 }

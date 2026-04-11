@@ -1,16 +1,21 @@
 {
   "landing": {
     "title": "Which Olivia Rodrigo song are you?",
-    "subtitle": "Olivia Rodrigo Type Indicator",
-    "hook": "A quiet little instrument for measuring the emotional weather of an Olivia listener.",
-    "cta": "Start",
-    "meta": "17 questions · about 3 min",
-    "draftHint": "You stopped at Q.{num}",
-    "resumeQuiz": "Resume",
-    "discardDraft": "Restart",
-    "lastResult": "Last time you got {songName}",
-    "viewLast": "View result",
-    "restart": "Start over"
+    "subtitle": "An emotional instrument for Olivia listeners. It doesn't rush to define you. It just wants to find the song that sounds most like you.",
+    "cta": "Start the quiz",
+    "meta": "17 questions · about 3 minutes",
+    "draftHint": "You made it to Q.{num} last time",
+    "resumeLabel": "Resume Draft",
+    "resumeQuiz": "Resume quiz",
+    "discardDraft": "Start over",
+    "sessionSaved": "session saved",
+    "lastResultLabel": "Last Result",
+    "lastResult": "Last time, you matched with \"{songName}\"",
+    "viewLast": "View last result",
+    "restart": "Retake quiz",
+    "questionsChip": "17 questions",
+    "durationChip": "3 min approx.",
+    "footerTagline": "Find the Olivia song that feels the most like you"
   },
   "quiz": {
     "progress": "{current} / {total}",
@@ -18,13 +23,17 @@
     "back": "Back"
   },
   "result": {
-    "header": "Your Olivia fragment",
-    "stageLabel": "Your Olivia era",
     "copyLink": "Copy result link",
     "copyLinkSuccess": "Link copied",
-    "copyLinkError": "Copy failed",
-    "neteaseButton": "♫ Listen on NetEase Music",
-    "retake": "Retake",
-    "disclaimer": "Fan-made project"
-  }
+    "copyLinkError": "Copy failed. Please copy the link manually.",
+    "neteaseButton": "Listen on NetEase Music",
+    "retake": "Retake quiz",
+    "notFoundTitle": "Result not found",
+    "notFoundBody": "This result page doesn't have song data yet.",
+    "neteasePending": "NetEase link coming soon",
+    "neteaseCopied": "Link copied. Open it in your browser.",
+    "neteaseManual": "Couldn't open it automatically. Please copy the link manually.",
+    "safeMode": "This result page is currently running in safe mode. The lyric block is hidden while the copyright-light version is being prepared."
+  },
+  "disclaimer": "This is a non-commercial fan-made project and is not affiliated with Olivia Rodrigo or Geffen Records. All song titles and lyrics belong to their original rights holders."
 }

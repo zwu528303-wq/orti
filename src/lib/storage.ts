@@ -34,20 +34,58 @@ function hasBrowserStorage() {
   return typeof window !== "undefined";
 }
 
-export function saveResult(result: StoredResult) {
-  if (!hasBrowserStorage()) {
-    return;
-  }
-
-  window.localStorage.setItem(RESULT_STORAGE_KEY, JSON.stringify(result));
-}
-
-export function getStoredResult(): StoredResult | null {
+function getLocalStorage() {
   if (!hasBrowserStorage()) {
     return null;
   }
 
-  const raw = window.localStorage.getItem(RESULT_STORAGE_KEY);
+  try {
+    return window.localStorage;
+  } catch {
+    return null;
+  }
+}
+
+function getSessionStorage() {
+  if (!hasBrowserStorage()) {
+    return null;
+  }
+
+  try {
+    return window.sessionStorage;
+  } catch {
+    return null;
+  }
+}
+
+export function saveResult(result: StoredResult) {
+  const storage = getLocalStorage();
+
+  if (!storage) {
+    return;
+  }
+
+  try {
+    storage.setItem(RESULT_STORAGE_KEY, JSON.stringify(result));
+  } catch {
+    // Ignore storage failures so quiz flow can continue in restricted browsers.
+  }
+}
+
+export function getStoredResult(): StoredResult | null {
+  const storage = getLocalStorage();
+
+  if (!storage) {
+    return null;
+  }
+
+  let raw: string | null = null;
+
+  try {
+    raw = storage.getItem(RESULT_STORAGE_KEY);
+  } catch {
+    return null;
+  }
 
   if (!raw) {
     return null;
@@ -61,19 +99,33 @@ export function getStoredResult(): StoredResult | null {
 }
 
 export function saveDraft(draft: QuizDraft) {
-  if (!hasBrowserStorage()) {
+  const storage = getSessionStorage();
+
+  if (!storage) {
     return;
   }
 
-  window.sessionStorage.setItem(DRAFT_STORAGE_KEY, JSON.stringify(draft));
+  try {
+    storage.setItem(DRAFT_STORAGE_KEY, JSON.stringify(draft));
+  } catch {
+    // Ignore storage failures so quiz flow can continue in restricted browsers.
+  }
 }
 
 export function getDraft(): QuizDraft | null {
-  if (!hasBrowserStorage()) {
+  const storage = getSessionStorage();
+
+  if (!storage) {
     return null;
   }
 
-  const raw = window.sessionStorage.getItem(DRAFT_STORAGE_KEY);
+  let raw: string | null = null;
+
+  try {
+    raw = storage.getItem(DRAFT_STORAGE_KEY);
+  } catch {
+    return null;
+  }
 
   if (!raw) {
     return null;
@@ -94,27 +146,47 @@ export function getDraft(): QuizDraft | null {
 }
 
 export function clearDraft() {
-  if (!hasBrowserStorage()) {
+  const storage = getSessionStorage();
+
+  if (!storage) {
     return;
   }
 
-  window.sessionStorage.removeItem(DRAFT_STORAGE_KEY);
+  try {
+    storage.removeItem(DRAFT_STORAGE_KEY);
+  } catch {
+    // Ignore storage failures so quiz flow can continue in restricted browsers.
+  }
 }
 
 export function saveQuizLanguage(language: QuizLanguage) {
-  if (!hasBrowserStorage()) {
+  const storage = getLocalStorage();
+
+  if (!storage) {
     return;
   }
 
-  window.localStorage.setItem(QUIZ_LANGUAGE_STORAGE_KEY, language);
+  try {
+    storage.setItem(QUIZ_LANGUAGE_STORAGE_KEY, language);
+  } catch {
+    // Ignore storage failures so the language switch remains non-blocking.
+  }
 }
 
 export function getQuizLanguage(): QuizLanguage {
-  if (!hasBrowserStorage()) {
+  const storage = getLocalStorage();
+
+  if (!storage) {
     return "zh";
   }
 
-  const raw = window.localStorage.getItem(QUIZ_LANGUAGE_STORAGE_KEY);
+  let raw: string | null = null;
+
+  try {
+    raw = storage.getItem(QUIZ_LANGUAGE_STORAGE_KEY);
+  } catch {
+    return "zh";
+  }
 
   return raw === "en" ? "en" : "zh";
 }

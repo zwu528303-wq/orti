@@ -16,6 +16,7 @@ type QuestionCardProps = {
   isLocked?: boolean;
   language: QuizLanguage;
   onLanguageChange: (language: QuizLanguage) => void;
+  showLanguageToggle?: boolean;
 };
 
 export function QuestionCard({
@@ -29,6 +30,7 @@ export function QuestionCard({
   isLocked = false,
   language,
   onLanguageChange,
+  showLanguageToggle = true,
 }: QuestionCardProps) {
   const isEnglish = language === "en";
   const questionTitle = isEnglish && question.questionEn
@@ -44,24 +46,25 @@ export function QuestionCard({
         </div>
 
         <div className="flex shrink-0 items-center gap-2">
-          <div className="inline-flex rounded-full border border-border-soft bg-bg-tint p-1">
-            {(["zh", "en"] as const).map((value) => (
-              <button
-                className={cn(
-                  "rounded-full px-3 py-1 text-[0.68rem] uppercase tracking-[0.18em] transition-colors duration-200",
-                  language === value
-                    ? "bg-accent-primary text-text-onDark"
-                    : "text-text-secondary hover:text-accent-primary",
-                )}
-                key={value}
-                onClick={() => onLanguageChange(value)}
-                type="button"
-              >
-                {value === "zh" ? "中" : "EN"}
-              </button>
-            ))}
-          </div>
-
+          {showLanguageToggle ? (
+            <div className="inline-flex rounded-full border border-border-soft bg-bg-tint p-1">
+              {(["zh", "en"] as const).map((value) => (
+                <button
+                  className={cn(
+                    "rounded-full px-3 py-1 text-[0.68rem] uppercase tracking-[0.18em] transition-colors duration-200",
+                    language === value
+                      ? "bg-accent-primary text-text-onDark"
+                      : "text-text-secondary hover:text-accent-primary",
+                  )}
+                  key={value}
+                  onClick={() => onLanguageChange(value)}
+                  type="button"
+                >
+                  {value === "zh" ? "中" : "EN"}
+                </button>
+              ))}
+            </div>
+          ) : null}
           <span className="info-chip shrink-0">
             Q.{String(current).padStart(2, "0")}
           </span>
