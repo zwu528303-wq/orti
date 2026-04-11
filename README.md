@@ -16,7 +16,7 @@ ORTI is a fan-made Olivia Rodrigo quiz site built with Next.js, TypeScript, and 
 - The quiz currently uses the 17 questions generated from `orti-questions-v2-final.md`
 - The result data currently uses the 23 songs generated from `orti-songs-v1.md`
 - The result page is shipping in `safe` quote mode by default, so lyrics are hidden unless `src/config/content.ts` is switched to `lyrics`
-- Analytics is currently routed through a local no-op wrapper in `src/lib/analytics.ts`; this keeps the app build-stable until the real Vercel analytics package is wired back in
+- Vercel Web Analytics is wired through `src/app/layout.tsx` and `src/lib/analytics.ts`
 
 ## GitHub Handoff
 
