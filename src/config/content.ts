@@ -1,3 +1,3 @@
 export const contentPolicy = {
-  resultQuoteMode: "safe" as "lyrics" | "safe",
+  resultQuoteMode: "lyrics" as "lyrics" | "safe",
 };

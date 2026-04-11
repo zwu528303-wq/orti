@@ -23,8 +23,11 @@ export interface QuizDraft {
   updatedAt: number;
 }
 
+export type QuizLanguage = "zh" | "en";
+
 export const RESULT_STORAGE_KEY = "olivia_quiz_result";
 export const DRAFT_STORAGE_KEY = "olivia_quiz_draft";
+export const QUIZ_LANGUAGE_STORAGE_KEY = "olivia_quiz_language";
 export const DRAFT_MAX_AGE_MS = 24 * 60 * 60 * 1000;
 
 function hasBrowserStorage() {
@@ -96,4 +99,22 @@ export function clearDraft() {
   }
 
   window.sessionStorage.removeItem(DRAFT_STORAGE_KEY);
+}
+
+export function saveQuizLanguage(language: QuizLanguage) {
+  if (!hasBrowserStorage()) {
+    return;
+  }
+
+  window.localStorage.setItem(QUIZ_LANGUAGE_STORAGE_KEY, language);
+}
+
+export function getQuizLanguage(): QuizLanguage {
+  if (!hasBrowserStorage()) {
+    return "zh";
+  }
+
+  const raw = window.localStorage.getItem(QUIZ_LANGUAGE_STORAGE_KEY);
+
+  return raw === "en" ? "en" : "zh";
 }

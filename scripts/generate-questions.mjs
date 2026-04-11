@@ -111,7 +111,7 @@ function parseQuestions(markdown) {
     const options = [];
 
     for (const optionMatch of trimmedBlock.matchAll(optionPattern)) {
-      const [, letter, textZh, , bulletBlock] = optionMatch;
+      const [, letter, textZh, textEn, bulletBlock] = optionMatch;
       const bulletLines = bulletBlock
         .trim()
         .split("\n")
@@ -139,6 +139,7 @@ function parseQuestions(markdown) {
       options.push({
         id: `${Number(idText)}${letter.toLowerCase()}`,
         textZh,
+        textEn,
         scores,
         spectrumScore,
         ...(anchorBoost ? { anchorBoost } : {}),
@@ -163,6 +164,7 @@ const fileContents = `export type ScoreKey = "d1" | "d2" | "d3" | "d4" | "d5" | 
 export interface Option {
   id: string;
   textZh: string;
+  textEn?: string;
   scores: Record<ScoreKey, number>;
   spectrumScore: {
     sour: number;

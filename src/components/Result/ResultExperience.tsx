@@ -128,11 +128,11 @@ export function ResultExperience() {
   };
 
   return (
-    <main className="app-shell space-y-5">
+    <main className="app-shell space-y-4">
       <SongCard song={song} stage={stage} />
 
-      <section className="lavender-panel space-y-4 p-5 sm:p-6">
-        <div className="flex flex-wrap gap-3">
+      <section className="lavender-panel space-y-3.5 p-4 sm:p-5">
+        <div className="flex flex-wrap gap-2.5">
           <Button onClick={handleCopyLink} type="button" variant="ghost">
             {zh.result.copyLink}
           </Button>

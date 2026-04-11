@@ -2,7 +2,7 @@ import { cn } from "@/lib/cn";
 
 type OptionButtonProps = {
   label: string;
-  textZh: string;
+  text: string;
   onSelect: () => void;
   disabled?: boolean;
   isSelected?: boolean;
@@ -10,7 +10,7 @@ type OptionButtonProps = {
 
 export function OptionButton({
   label,
-  textZh,
+  text,
   onSelect,
   disabled = false,
   isSelected = false,
@@ -18,7 +18,7 @@ export function OptionButton({
   return (
     <button
       className={cn(
-        "w-full rounded-[20px] border border-border-soft bg-bg-card px-5 py-5 text-left shadow-card transition-all duration-200 ease-out",
+        "w-full rounded-[20px] border border-border-soft bg-bg-card px-5 py-4 text-left shadow-card transition-all duration-200 ease-out",
         "hover:-translate-y-0.5 hover:border-accent-primary hover:bg-bg-tint hover:shadow-cardHover",
         "disabled:cursor-not-allowed disabled:opacity-70",
         isSelected && "border-accent-primary bg-bg-quote shadow-cardHover",
@@ -40,7 +40,7 @@ export function OptionButton({
         </span>
 
         <div className="min-w-0 flex-1">
-          <p className="text-base leading-7 text-text-primary">{textZh}</p>
+          <p className="text-base leading-6.5 text-text-primary">{text}</p>
         </div>
       </div>
     </button>

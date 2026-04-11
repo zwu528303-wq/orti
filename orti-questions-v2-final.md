@@ -42,34 +42,33 @@
 
 ---
 
-## Q.01 · 一个深夜的瞬间
+## Q.01 · 朋友圈里的你
 
-**凌晨你又一次刷到那个一直被算法推给你的女孩。你不认识她，但你已经看完了她的几十条视频。这一刻你心里真实的感受是？**
+**在你最亲密的朋友圈里，你通常是哪种角色？**
 
-*Late at night, the algorithm shows you that girl again. You don't know her, but you've watched dozens of her videos. What do you actually feel?*
+*Among your closest friends, you're usually the —*
 
-**A.** 一种说不清楚的累。我也想笑得那么轻
-*A tired feeling I can't name. I want to laugh that lightly too*
-- 维度：D1+2, D3+1, D4+0, D6+0
-- Spectrum：GUTS+1, YSPS+1
-- 锚点：brutal
-
-**B.** 我注意到自己想 mute 她。然后我注意到自己点了关注
-*I catch myself wanting to mute her. Then I catch myself hitting follow*
-- 维度：D1+2, D3+2, D4+0
-- Spectrum：GUTS+2
-- 锚点：lacy
-
-**C.** 一种诚实的、丑陋的羡慕。我不打算粉饰它
-*An honest, ugly kind of envy. I'm not dressing it up*
-- 维度：D1+2, D2+1, D4+0, D5+2
-- Spectrum：GUTS+2
-- 锚点：jealousy_jealousy
-
-**D.** 我心里想的是：我以前也笑得那么轻过。是从什么时候开始不是了的？
-*I think: I used to laugh that lightly too. When did I stop?*
-- 维度：D1+2, D3+1, D6+0
+**A.** 那个会在所有人都笑的时候，注意到角落里有人没在笑的
+*The one who notices, when everyone's laughing, that someone in the corner isn't*
+- 维度：D1+1, D4+1, D7+1
 - Spectrum：SOUR+1, YSPS+1
+- 锚点：hope_ur_ok
+
+**B.** 永远在讲故事的那个，我的烂事是大家的下酒菜
+*The storyteller. My disasters are everyone's entertainment*
+- 维度：D1+2, D4+2, D5+1, D7+3
+- Spectrum：GUTS+2
+- 锚点：ballad_of_a_homeschooled_girl
+
+**C.** 安安静静在听的那个，但我什么都记得
+*The quiet one who listens, but remembers everything*
+- 维度：D1+0, D4+1, D6+1, D7+0
+- Spectrum：YSPS+2
+
+**D.** 那个会突然爆出一句真话让大家安静三秒的
+*The one who blurts out something honest and makes the room go quiet for three seconds*
+- 维度：D1+2, D4+2, D5+3, D7+2
+- Spectrum：GUTS+2
 
 ---
 
@@ -103,33 +102,34 @@
 
 ---
 
-## Q.03 · 朋友圈里的你
+## Q.03 · 一个深夜的瞬间
 
-**在你最亲密的朋友圈里，你通常是哪种角色？**
+**凌晨你又一次刷到那个一直被算法推给你的女孩。你不认识她，但你已经看完了她的几十条视频。这一刻你心里真实的感受是？**
 
-*Among your closest friends, you're usually the —*
+*Late at night, the algorithm shows you that girl again. You don't know her, but you've watched dozens of her videos. What do you actually feel?*
 
-**A.** 那个会在所有人都笑的时候，注意到角落里有人没在笑的
-*The one who notices, when everyone's laughing, that someone in the corner isn't*
-- 维度：D1+1, D4+1, D7+1
+**A.** 一种说不清楚的累。我也想笑得那么轻
+*A tired feeling I can't name. I want to laugh that lightly too*
+- 维度：D1+2, D3+1, D4+0, D6+0
+- Spectrum：GUTS+1, YSPS+1
+- 锚点：brutal
+
+**B.** 我注意到自己想 mute 她。然后我注意到自己点了关注
+*I catch myself wanting to mute her. Then I catch myself hitting follow*
+- 维度：D1+2, D3+2, D4+0
+- Spectrum：GUTS+2
+- 锚点：lacy
+
+**C.** 一种酸酸的、说不清是什么的情绪。但我知道它叫什么
+*A sour something I can't quite name. But I know what it's called.*
+- 维度：D1+2, D2+1, D4+0, D5+2
+- Spectrum：GUTS+2
+- 锚点：jealousy_jealousy
+
+**D.** 我心里想的是：我以前也笑得那么轻过。是从什么时候开始不是了的？
+*I think: I used to laugh that lightly too. When did I stop?*
+- 维度：D1+2, D3+1, D6+0
 - Spectrum：SOUR+1, YSPS+1
-- 锚点：hope_ur_ok
-
-**B.** 永远在讲故事的那个，我的烂事是大家的下酒菜
-*The storyteller. My disasters are everyone's entertainment*
-- 维度：D1+2, D4+2, D5+1, D7+3
-- Spectrum：GUTS+2
-- 锚点：ballad_of_a_homeschooled_girl
-
-**C.** 安安静静在听的那个，但我什么都记得
-*The quiet one who listens, but remembers everything*
-- 维度：D1+0, D4+1, D6+1, D7+0
-- Spectrum：YSPS+2
-
-**D.** 那个会突然爆出一句真话让大家安静三秒的
-*The one who blurts out something honest and makes the room go quiet for three seconds*
-- 维度：D1+2, D4+2, D5+3, D7+2
-- Spectrum：GUTS+2
 
 ---
 

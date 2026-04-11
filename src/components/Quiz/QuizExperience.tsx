@@ -15,9 +15,12 @@ import {
 import {
   clearDraft,
   getDraft,
+  getQuizLanguage,
   saveDraft,
+  saveQuizLanguage,
   saveResult,
   type QuizDraft,
+  type QuizLanguage,
 } from "@/lib/storage";
 import { useQuizContext } from "@/contexts/QuizContext";
 
@@ -44,6 +47,7 @@ export function QuizExperience() {
   const restoredRef = useRef(false);
   const startedRef = useRef(false);
   const [isLocked, setIsLocked] = useState(false);
+  const [language, setLanguage] = useState<QuizLanguage>(() => getQuizLanguage());
   const { answers, currentQuestion, loadQuizState, setAnswer, setCurrentQuestion } =
     useQuizContext();
 
@@ -141,6 +145,11 @@ export function QuizExperience() {
     }, 220);
   };
 
+  const handleLanguageChange = (nextLanguage: QuizLanguage) => {
+    setLanguage(nextLanguage);
+    saveQuizLanguage(nextLanguage);
+  };
+
   return (
     <main className="app-shell flex min-h-screen flex-col justify-center">
       <div
@@ -151,7 +160,9 @@ export function QuizExperience() {
           canGoBack={currentQuestion > 0}
           current={currentQuestion + 1}
           isLocked={isLocked}
+          language={language}
           onBack={handleBack}
+          onLanguageChange={handleLanguageChange}
           onSelect={handleSelect}
           question={question}
           selectedOptionId={selectedOptionId}
