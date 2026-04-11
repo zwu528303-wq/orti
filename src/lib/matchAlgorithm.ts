@@ -19,6 +19,17 @@ const zeroScores: ScoreMap = {
 
 const scoreKeys = Object.keys(zeroScores) as Array<keyof ScoreMap>;
 const questionMap = new Map(questions.map((question) => [question.id, question]));
+const stageOrder: SpectrumStage[] = [
+  "deep_sour",
+  "between_sour_guts",
+  "heart_of_guts",
+  "between_guts_ysps",
+  "ysps_edge",
+];
+const anchorBonusPerHit = 0.06;
+const anchorBonusCap = 0.12;
+const closeAnchorWindow = 0.012;
+const rescueWindow = 0.09;
 
 const theoreticalMax = questions.reduce<ScoreMap>((accumulator, question) => {
   for (const key of scoreKeys) {
@@ -74,16 +85,24 @@ function normalizeScores(scores: ScoreMap) {
   });
 }
 
-function calculateAnchorBonus(songId: string, answers: AnswerSelection[]) {
-  return answers.reduce((total, answer) => {
+function calculateAnchorHits(answers: AnswerSelection[]) {
+  const hits = new Map<string, number>();
+
+  for (const answer of answers) {
     const option = getSelectedOption(answer);
 
     if (!option?.anchorBoost) {
-      return total;
+      continue;
     }
 
-    return option.anchorBoost === songId ? total + 0.045 : total;
-  }, 0);
+    hits.set(option.anchorBoost, (hits.get(option.anchorBoost) ?? 0) + 1);
+  }
+
+  return hits;
+}
+
+function calculateAnchorBonus(hitCount: number) {
+  return Math.min(hitCount * anchorBonusPerHit, anchorBonusCap);
 }
 
 function calculateStageBonus(song: Song, stage: SpectrumStage) {
@@ -91,7 +110,23 @@ function calculateStageBonus(song: Song, stage: SpectrumStage) {
     return 0;
   }
 
-  return song.spectrumHint === stage ? 0.03 : 0;
+  const distance = Math.abs(
+    stageOrder.indexOf(song.spectrumHint) - stageOrder.indexOf(stage),
+  );
+
+  if (distance === 0) {
+    return 0.04;
+  }
+
+  if (distance === 1) {
+    return 0.015;
+  }
+
+  if (distance === 2) {
+    return -0.015;
+  }
+
+  return -0.05;
 }
 
 export function matchSong({
@@ -103,23 +138,44 @@ export function matchSong({
 }) {
   const userScores = calculateUserScores(answers);
   const normalizedUser = normalizeScores(userScores);
+  const anchorHits = calculateAnchorHits(answers);
 
   const rankedSongs = songs
     .map((song) => {
       const songVector = scoreKeys.map((key) => song.fingerprint[key] / 10);
       const similarity = cosineSimilarity(normalizedUser, songVector);
-      const anchorBonus = calculateAnchorBonus(song.id, answers);
+      const hitCount = anchorHits.get(song.id) ?? 0;
+      const anchorBonus = calculateAnchorBonus(hitCount);
       const stageBonus = calculateStageBonus(song, spectrumStage);
 
       return {
         song,
+        hitCount,
         score: similarity + anchorBonus + stageBonus,
       };
     })
     .sort((left, right) => right.score - left.score);
 
+  const topScore = rankedSongs[0]?.score ?? 0;
+  const rescuedSong = rankedSongs
+    .filter(
+      (entry) =>
+        entry.hitCount >= 2 && topScore - entry.score <= rescueWindow,
+    )
+    .sort(
+      (left, right) =>
+        right.hitCount - left.hitCount || right.score - left.score,
+    )[0];
+  const selectedSong =
+    rescuedSong ??
+    rankedSongs.find(
+      (entry) =>
+        entry.hitCount > 0 && topScore - entry.score <= closeAnchorWindow,
+    ) ??
+    rankedSongs[0];
+
   return {
-    song: rankedSongs[0].song,
+    song: selectedSong.song,
     scores: userScores,
   };
 }

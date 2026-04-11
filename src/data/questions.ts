@@ -100,8 +100,7 @@ export const questions: Question[] = [
           "sour": 1,
           "guts": 0,
           "ysps": 1
-        },
-        "anchorBoost": "teenage_dream"
+        }
       }
     ]
   },
@@ -265,8 +264,7 @@ export const questions: Question[] = [
           "sour": 0,
           "guts": 2,
           "ysps": 0
-        },
-        "anchorBoost": "all_american_bitch"
+        }
       }
     ]
   },
@@ -349,8 +347,7 @@ export const questions: Question[] = [
           "sour": 0,
           "guts": 2,
           "ysps": 0
-        },
-        "anchorBoost": "brutal"
+        }
       }
     ]
   },
@@ -433,7 +430,7 @@ export const questions: Question[] = [
           "guts": 1,
           "ysps": 0
         },
-        "anchorBoost": "love_is_embarrassing"
+        "anchorBoost": "enough_for_you"
       }
     ]
   },
@@ -478,7 +475,8 @@ export const questions: Question[] = [
           "sour": 1,
           "guts": 1,
           "ysps": 0
-        }
+        },
+        "anchorBoost": "1_step_forward_3_steps_back"
       },
       {
         "id": "6c",
@@ -599,7 +597,7 @@ export const questions: Question[] = [
           "guts": 0,
           "ysps": 0
         },
-        "anchorBoost": "making_the_bed"
+        "anchorBoost": "enough_for_you"
       }
     ]
   },
@@ -726,8 +724,7 @@ export const questions: Question[] = [
           "sour": 0,
           "guts": 2,
           "ysps": 0
-        },
-        "anchorBoost": "all_american_bitch"
+        }
       },
       {
         "id": "9c",
@@ -745,8 +742,7 @@ export const questions: Question[] = [
           "sour": 0,
           "guts": 2,
           "ysps": 0
-        },
-        "anchorBoost": "all_american_bitch"
+        }
       },
       {
         "id": "9d",
@@ -810,7 +806,8 @@ export const questions: Question[] = [
           "sour": 1,
           "guts": 0,
           "ysps": 1
-        }
+        },
+        "anchorBoost": "favorite_crime"
       },
       {
         "id": "10c",
@@ -930,7 +927,8 @@ export const questions: Question[] = [
           "sour": 0,
           "guts": 1,
           "ysps": 1
-        }
+        },
+        "anchorBoost": "jealousy_jealousy"
       }
     ]
   },
@@ -1039,8 +1037,7 @@ export const questions: Question[] = [
           "sour": 0,
           "guts": 0,
           "ysps": 1
-        },
-        "anchorBoost": "teenage_dream"
+        }
       },
       {
         "id": "13b",
@@ -1203,8 +1200,7 @@ export const questions: Question[] = [
           "sour": 2,
           "guts": 0,
           "ysps": 0
-        },
-        "anchorBoost": "traitor"
+        }
       },
       {
         "id": "15b",
@@ -1222,7 +1218,8 @@ export const questions: Question[] = [
           "sour": 0,
           "guts": 2,
           "ysps": 0
-        }
+        },
+        "anchorBoost": "logical"
       },
       {
         "id": "15c",
@@ -1259,8 +1256,7 @@ export const questions: Question[] = [
           "sour": 0,
           "guts": 3,
           "ysps": 0
-        },
-        "anchorBoost": "vampire"
+        }
       }
     ]
   },
@@ -1286,7 +1282,8 @@ export const questions: Question[] = [
           "sour": 0,
           "guts": 0,
           "ysps": 2
-        }
+        },
+        "anchorBoost": "happier"
       },
       {
         "id": "16b",
@@ -1403,8 +1400,7 @@ export const questions: Question[] = [
           "sour": 0,
           "guts": 3,
           "ysps": 0
-        },
-        "anchorBoost": "all_american_bitch"
+        }
       },
       {
         "id": "17d",

@@ -13,6 +13,26 @@ type SpectrumCopy = {
 };
 
 const questionMap = new Map(questions.map((question) => [question.id, question]));
+const theoreticalSpectrumMax = questions.reduce(
+  (accumulator, question) => {
+    accumulator.sour += Math.max(
+      ...question.options.map((option) => option.spectrumScore.sour),
+    );
+    accumulator.guts += Math.max(
+      ...question.options.map((option) => option.spectrumScore.guts),
+    );
+    accumulator.ysps += Math.max(
+      ...question.options.map((option) => option.spectrumScore.ysps),
+    );
+
+    return accumulator;
+  },
+  {
+    sour: 0,
+    guts: 0,
+    ysps: 0,
+  },
+);
 
 function getSelectedOption({ questionId, optionId }: AnswerSelection) {
   const question = questionMap.get(questionId);
@@ -37,15 +57,47 @@ export function calculateSpectrumStage(answers: AnswerSelection[]): SpectrumStag
     ysps += option.spectrumScore.ysps;
   }
 
-  const total = sour + guts + ysps || 1;
-  const sourRatio = sour / total;
-  const gutsRatio = guts / total;
-  const yspsRatio = ysps / total;
+  const sourRatio = sour / (theoreticalSpectrumMax.sour || 1);
+  const gutsRatio = guts / (theoreticalSpectrumMax.guts || 1);
+  const yspsRatio = ysps / (theoreticalSpectrumMax.ysps || 1);
 
-  if (sourRatio >= 0.5) return "deep_sour";
-  if (yspsRatio >= 0.38) return "ysps_edge";
-  if (gutsRatio >= 0.42 && yspsRatio < 0.24) return "heart_of_guts";
-  if (sour >= guts) return "between_sour_guts";
+  if (sourRatio >= gutsRatio + 0.05 && sourRatio >= yspsRatio + 0.05) {
+    return "deep_sour";
+  }
+
+  if (yspsRatio >= sourRatio + 0.05 && yspsRatio >= gutsRatio + 0.05) {
+    return "ysps_edge";
+  }
+
+  if (gutsRatio >= sourRatio + 0.12 && gutsRatio >= yspsRatio + 0.12) {
+    return "heart_of_guts";
+  }
+
+  const topTwoStages = [
+    {
+      stage: "deep_sour" as const,
+      score: sourRatio,
+    },
+    {
+      stage: "heart_of_guts" as const,
+      score: gutsRatio,
+    },
+    {
+      stage: "ysps_edge" as const,
+      score: yspsRatio,
+    },
+  ]
+    .sort((left, right) => right.score - left.score)
+    .slice(0, 2)
+    .map((entry) => entry.stage);
+
+  if (
+    topTwoStages.includes("deep_sour") &&
+    topTwoStages.includes("heart_of_guts")
+  ) {
+    return "between_sour_guts";
+  }
+
   return "between_guts_ysps";
 }
 

@@ -70,7 +70,6 @@
 *I think: I used to laugh that lightly too. When did I stop?*
 - 维度：D1+2, D3+1, D6+0
 - Spectrum：SOUR+1, YSPS+1
-- 锚点：teenage_dream
 
 ---
 
@@ -131,7 +130,6 @@
 *The one who blurts out something honest and makes the room go quiet for three seconds*
 - 维度：D1+2, D4+2, D5+3, D7+2
 - Spectrum：GUTS+2
-- 锚点：all_american_bitch
 
 ---
 
@@ -167,7 +165,6 @@
 *A feeling that's small — but you refuse to let anyone call it small*
 - 维度：D1+1, D5+2
 - Spectrum：GUTS+2
-- 锚点：brutal
 
 ---
 
@@ -198,7 +195,7 @@
 *I'll send another one. Casual. Pretending I don't care*
 - 维度：D1+2, D3+3, D4+0
 - Spectrum：SOUR+1, GUTS+1
-- 锚点：love_is_embarrassing
+- 锚点：enough_for_you
 
 ---
 
@@ -218,6 +215,7 @@
 *Open my notes app and write everything down*
 - 维度：D1+2, D3+2, D4+1
 - Spectrum：SOUR+1, GUTS+1
+- 锚点：1_step_forward_3_steps_back
 
 **C.** 翻一下他们的 ins，然后立刻后悔自己点开了
 *Check their Instagram, then hate myself for it*
@@ -260,7 +258,7 @@
 *I'm still crying. I've been crying for a while*
 - 维度：D1+3, D3+2, D6+0
 - Spectrum：SOUR+2
-- 锚点：making_the_bed
+- 锚点：enough_for_you
 
 ---
 
@@ -318,13 +316,11 @@
 *An odd discomfort. Like being put in a beautiful box*
 - 维度：D1+1, D4+1, D5+3
 - Spectrum：GUTS+2
-- 锚点：all_american_bitch
 
 **C.** 想笑。如果他们知道我真实的样子就不会这么说了
 *I want to laugh. If they knew the real me, they'd take it back*
 - 维度：D1+2, D4+1, D5+3
 - Spectrum：GUTS+2
-- 锚点：all_american_bitch
 
 **D.** 谢谢，但我已经累了
 *Thanks. But I'm tired*
@@ -350,6 +346,7 @@
 *Acts fine, then writes a long letter at home that never gets sent*
 - 维度：D1+1, D2+1, D6+1
 - Spectrum：SOUR+1, YSPS+1
+- 锚点：favorite_crime
 
 **C.** 切断联系，让消失成为我的回答
 *Cut them off. Let my silence be the answer*
@@ -392,6 +389,7 @@
 *Not familiar. "Making someone pay" isn't how I process things. I just disappear*
 - 维度：D1+1, D2+1, D4+2, D5+1, D6+2
 - Spectrum：YSPS+1, GUTS+1
+- 锚点：jealousy_jealousy
 
 ---
 
@@ -436,7 +434,6 @@
 *"You don't look your age at all"*
 - 维度：D4+0, D5+2, D6+0
 - Spectrum：YSPS+1
-- 锚点：teenage_dream
 
 **B.** "你哭起来真好看"
 *"You look so pretty when you cry"*
@@ -496,12 +493,12 @@
 *Immediately fold myself smaller. I've heard this too many times*
 - 维度：D1+1, D4+0, D5+0
 - Spectrum：SOUR+2
-- 锚点：traitor
 
 **B.** 心里气得不行，但表面上笑一笑
 *Furious inside, smiling on the outside*
 - 维度：D1+2, D2+1, D5+1
 - Spectrum：GUTS+2
+- 锚点：logical
 
 **C.** "对，我就是。"——我不会再为这件事道歉了
 *"Yeah, I am." I'm done apologizing for this*
@@ -513,7 +510,6 @@
 *I'd ask them: so you only want some of me?*
 - 维度：D1+3, D2+2, D4+2, D5+3
 - Spectrum：GUTS+3
-- 锚点：vampire
 
 ---
 
@@ -531,6 +527,7 @@
 *All the things that made you cry — they really did pass*
 - 维度：D1+1, D6+3
 - Spectrum：YSPS+2
+- 锚点：happier
 
 **B.** 别那么努力让所有人喜欢你
 *Stop trying so hard to make everyone like you*
@@ -570,7 +567,6 @@
 *Someone who's stopped making themselves smaller to be liked*
 - 维度：D1+1, D4+3, D5+3, D6+1
 - Spectrum：GUTS+3
-- 锚点：all_american_bitch
 
 **D.** 一个对自己温柔得，跟对最爱的人一样温柔的人
 *Someone who treats themselves with the same tenderness they save for the people they love most*
@@ -614,31 +610,29 @@ GUTS 仍偏多（情境题天然偏 GUTS），将在歌曲指纹设计阶段做�
 |---|---|
 | drivers_license | Q.04B, Q.06A |
 | deja_vu | Q.06C, Q.08B |
-| traitor | Q.05A, Q.07A, Q.15A |
+| traitor | Q.05A, Q.07A |
 | good_4_u | Q.05C, Q.10A |
-| jealousy_jealousy | Q.01C |
-| brutal | Q.01A, Q.04D, Q.12C |
-| favorite_crime | Q.02C |
+| jealousy_jealousy | Q.01C, Q.11D |
+| brutal | Q.01A, Q.12C |
+| favorite_crime | Q.02C, Q.10B |
 | hope_ur_ok | Q.03A |
-| all_american_bitch | Q.03D, Q.09B, Q.09C, Q.13B, Q.15C, Q.17C |
+| all_american_bitch | Q.13B, Q.15C |
 | bad_idea_right | Q.08C |
 | lacy | Q.01B, Q.04A |
 | ballad_of_a_homeschooled_girl | Q.03B, Q.08A |
-| making_the_bed | Q.06D, Q.07D |
-| logical | Q.07C |
-| love_is_embarrassing | Q.02A, Q.05D |
+| making_the_bed | Q.06D |
+| logical | Q.07C, Q.15B |
+| love_is_embarrassing | Q.02A |
 | the_grudge | Q.10D, Q.12D |
 | pretty_isnt_pretty | Q.09D, Q.13D, Q.14B |
-| teenage_dream | Q.01D, Q.04C, Q.13A, Q.16C |
-| vampire | Q.10C, Q.11C, Q.15D |
+| teenage_dream | Q.04C, Q.16C |
+| vampire | Q.10C, Q.11C |
 | get_him_back | Q.11A |
-| 1_step_forward_3_steps_back | Q.12A |
+| 1_step_forward_3_steps_back | Q.06B, Q.12A |
+| enough_for_you | Q.05D, Q.07D |
+| happier | Q.16A |
 
-**没有锚点的歌曲：** `enough_for_you` ⚠️
-
-⚠️ enough_for_you 在精选过程中失去了锚点（原本在被删的 Q.16 没打的电话里）。下一阶段写歌曲指纹时需要给它一个非常独特、不与其他歌冲突的维度组合，让它能通过维度匹配被自然测出。
-
-建议指纹方向：**enough_for_you = 高 D3 + 极低 D4 + 低 D5 的极端组合**——"为了你我变成了别的什么人"那种自我消失感，是一个独特的维度坐标，不会跟 drivers_license 或 traitor 撞车。
+**没有锚点的歌曲：** 无 ✅
 
 ---
 
