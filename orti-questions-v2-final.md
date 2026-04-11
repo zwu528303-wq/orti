@@ -97,8 +97,8 @@
 - Spectrum：SOUR+1, YSPS+1
 - 锚点：favorite_crime
 
-**D.** 我没有这种账号。我连对自己都很 curated
-*I don't have one. Even to myself, I'm curated*
+**D.** 我没有这种账号。就连留给自己的那一面，我都会先整理过再放出来
+*I don't have one. Even the version I keep for myself gets edited first*
 - 维度：D1+0, D4+1, D5+0
 - Spectrum：GUTS+1
 

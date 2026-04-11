@@ -3,7 +3,6 @@ import { cn } from "@/lib/cn";
 type OptionButtonProps = {
   label: string;
   textZh: string;
-  textEn?: string;
   onSelect: () => void;
   disabled?: boolean;
   isSelected?: boolean;
@@ -12,7 +11,6 @@ type OptionButtonProps = {
 export function OptionButton({
   label,
   textZh,
-  textEn,
   onSelect,
   disabled = false,
   isSelected = false,
@@ -43,11 +41,6 @@ export function OptionButton({
 
         <div className="min-w-0 flex-1">
           <p className="text-base leading-7 text-text-primary">{textZh}</p>
-          {textEn ? (
-            <p className="mt-2 text-sm italic leading-6 text-text-secondary">
-              {textEn}
-            </p>
-          ) : null}
         </div>
       </div>
     </button>

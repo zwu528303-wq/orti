@@ -77,7 +77,6 @@ export function QuestionCard({
             key={option.id}
             label={String.fromCharCode(65 + index)}
             onSelect={() => onSelect(option.id)}
-            textEn={option.textEn}
             textZh={option.textZh}
           />
         ))}
