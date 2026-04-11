@@ -1,6 +1,12 @@
 "use client";
 
-import { createContext, useContext, useState } from "react";
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useMemo,
+  useState,
+} from "react";
 
 type AnswerMap = Record<number, string>;
 
@@ -19,22 +25,34 @@ export function QuizProvider({ children }: { children: React.ReactNode }) {
   const [answers, setAnswers] = useState<AnswerMap>({});
   const [currentQuestion, setCurrentQuestion] = useState(0);
 
-  const value: QuizContextValue = {
-    answers,
-    currentQuestion,
-    setAnswer: (questionId, optionId) => {
-      setAnswers((previous) => ({ ...previous, [questionId]: optionId }));
-    },
-    setCurrentQuestion,
-    resetQuiz: () => {
-      setAnswers({});
-      setCurrentQuestion(0);
-    },
-    loadQuizState: (nextAnswers, questionIndex) => {
+  const setAnswer = useCallback((questionId: number, optionId: string) => {
+    setAnswers((previous) => ({ ...previous, [questionId]: optionId }));
+  }, []);
+
+  const resetQuiz = useCallback(() => {
+    setAnswers({});
+    setCurrentQuestion(0);
+  }, []);
+
+  const loadQuizState = useCallback(
+    (nextAnswers: AnswerMap, questionIndex: number) => {
       setAnswers(nextAnswers);
       setCurrentQuestion(questionIndex);
     },
-  };
+    [],
+  );
+
+  const value: QuizContextValue = useMemo(
+    () => ({
+      answers,
+      currentQuestion,
+      setAnswer,
+      setCurrentQuestion,
+      resetQuiz,
+      loadQuizState,
+    }),
+    [answers, currentQuestion, loadQuizState, resetQuiz, setAnswer],
+  );
 
   return <QuizContext.Provider value={value}>{children}</QuizContext.Provider>;
 }
