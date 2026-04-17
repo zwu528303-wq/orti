@@ -9,7 +9,7 @@ export function Disclaimer({ locale = "zh" }: DisclaimerProps) {
   const copy = getDictionary(locale);
 
   return (
-    <p className="mx-auto max-w-[32rem] text-center text-[0.72rem] leading-6 text-text-onDark/72">
+    <p className="mx-auto max-w-[32rem] text-center text-[0.72rem] leading-6 text-text-secondary">
       {copy.disclaimer}
       {locale === "zh" ? (
         <>

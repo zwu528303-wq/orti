@@ -5,7 +5,11 @@ const rootDir = process.cwd();
 const sourceArg = process.argv[2];
 const sourceCandidates = sourceArg
   ? [sourceArg]
-  : ["orti-questions-v2-final.md", "orti-questions-v1.md"];
+  : [
+      "orti-questions-v3-final.md",
+      "orti-questions-v2-final.md",
+      "orti-questions-v1.md",
+    ];
 const sourceRelativePath = sourceCandidates.find((candidate) =>
   fs.existsSync(path.join(rootDir, candidate)),
 );

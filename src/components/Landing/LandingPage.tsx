@@ -65,11 +65,13 @@ export function LandingPage({ locale = "zh" }: LandingPageProps) {
         <div className="flex items-start justify-between gap-4">
           <div className="space-y-3">
             <p className="eyebrow">Olivia Rodrigo Type Indicator</p>
-            <Wordmark />
+            <div className="pt-[20px]">
+              <Wordmark />
+            </div>
           </div>
 
           <button
-            className="inline-flex min-h-10 items-center justify-center rounded-full border border-border-soft bg-bg-tint px-4 py-2 text-[0.72rem] uppercase tracking-[0.18em] text-text-secondary transition-colors duration-200 hover:border-accent-primary hover:text-accent-primary"
+            className="inline-flex min-h-10 items-center justify-center rounded-[10px] border-[1.5px] border-border-soft bg-accent-light px-4 py-2 text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-text-primary shadow-card transition-colors duration-200 hover:bg-accent-primary hover:text-text-onDark"
             onClick={handleLocaleSwitch}
             type="button"
           >
@@ -165,7 +167,7 @@ export function LandingPage({ locale = "zh" }: LandingPageProps) {
       </section>
 
       <section className="px-1 text-center">
-        <p className="text-sm tracking-[0.08em] text-text-onDark/78">
+        <p className="text-sm tracking-[0.08em] text-text-secondary">
           {copy.landing.meta} · {copy.landing.footerTagline}
         </p>
       </section>

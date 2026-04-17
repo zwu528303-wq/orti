@@ -7,9 +7,9 @@ type ButtonVariant = "outline" | "ghost";
 
 const buttonStyles: Record<ButtonVariant, string> = {
   outline:
-    "border border-accent-primary bg-accent-primary text-text-onDark shadow-card hover:-translate-y-0.5 hover:border-accent-primary hover:bg-accent-primary/90",
+    "border-[1.5px] border-border-soft bg-accent-primary text-text-onDark shadow-card hover:bg-[#a85e80]",
   ghost:
-    "border border-border-medium bg-bg-card text-text-secondary hover:-translate-y-0.5 hover:border-accent-primary hover:bg-bg-tint hover:text-text-primary",
+    "border-[1.5px] border-border-soft bg-accent-light text-text-primary shadow-card hover:bg-[#f1c3d4]",
 };
 
 type BaseProps = {
@@ -29,7 +29,7 @@ type NativeButtonProps = BaseProps &
 
 export function Button(props: LinkProps | NativeButtonProps) {
   const className = cn(
-    "inline-flex min-h-12 items-center justify-center rounded-pill px-6 py-3 text-sm tracking-[0.12em] transition-all duration-200 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-light/70 focus-visible:ring-offset-2 focus-visible:ring-offset-bg-primary",
+    "inline-flex min-h-12 items-center justify-center rounded-[10px] px-6 py-3 text-sm font-semibold uppercase tracking-[0.16em] transition-colors duration-200 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary focus-visible:ring-offset-2 focus-visible:ring-offset-bg-primary",
     buttonStyles[props.variant ?? "outline"],
     props.className,
   );

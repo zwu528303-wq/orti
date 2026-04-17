@@ -45,4 +45,6 @@ export const songPersonalityEn: Record<string, string> = {
     "You know the beauty standard is toxic, engineered, impossible on purpose. Knowing that still doesn't make it easy to believe you're enough every day. You're living consciously inside a system you know is broken.",
   teenage_dream:
     "You're afraid your best self might already be behind you. Everyone says it gets better, but a quieter voice asks, what if it doesn't for me? That fear comes from love too. You still ache for the version of you that believed in everything.",
+  drop_dead:
+    "You already know love can make you lose your balance, and you step toward it anyway. This isn't innocence. It's willingness. You're not untouched by risk, just unwilling to let self-protection be the only thing steering you.",
 };

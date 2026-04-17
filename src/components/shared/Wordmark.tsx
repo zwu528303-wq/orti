@@ -13,8 +13,8 @@ const sizeStyles: Record<NonNullable<WordmarkProps["size"]>, string> = {
 };
 
 const toneStyles: Record<NonNullable<WordmarkProps["tone"]>, string> = {
-  primary: "text-accent-primary",
-  secondary: "text-text-secondary",
+  primary: "text-text-primary",
+  secondary: "text-text-primary",
 };
 
 export function Wordmark({

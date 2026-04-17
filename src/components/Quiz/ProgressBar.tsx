@@ -14,7 +14,7 @@ export function ProgressBar({ current, total }: ProgressBarProps) {
           {String(current).padStart(2, "0")} / {String(total).padStart(2, "0")}
         </span>
       </div>
-      <div className="h-2 w-full overflow-hidden rounded-full bg-accent-light/35">
+      <div className="h-3 w-full overflow-hidden rounded-full border-[1.5px] border-border-soft bg-accent-bright">
         <div
           className="h-full rounded-full bg-accent-primary transition-all duration-500 ease-out"
           style={{ width: `${progress}%` }}

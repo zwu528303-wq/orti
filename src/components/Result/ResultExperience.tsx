@@ -168,7 +168,7 @@ export function ResultExperience({ locale = "zh" }: ResultExperienceProps) {
 
         {manualCopyVisible ? (
           <input
-            className="w-full rounded-soft border border-border-soft bg-bg-card px-4 py-3 text-sm text-text-secondary"
+            className="w-full rounded-soft border-[1.5px] border-border-soft bg-bg-card px-4 py-3 text-sm text-text-primary"
             readOnly
             value={resultUrl}
           />

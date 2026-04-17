@@ -31,7 +31,7 @@ export function SongCard({ song, stage, locale = "zh" }: SongCardProps) {
         <SpectrumRail activeSlot={spectrumCopy.slot} />
 
         <div className="flex min-h-[29.5rem] flex-col sm:min-h-[31rem]">
-          <div className="border-b border-border-soft pb-4">
+          <div className="border-b-[1.5px] border-border-soft pb-4">
             {locale === "en" ? (
               <p className="text-sm leading-6.5 text-text-secondary">{spectrumCopy.en}</p>
             ) : (
@@ -50,13 +50,13 @@ export function SongCard({ song, stage, locale = "zh" }: SongCardProps) {
             </p>
             <div className="mt-3 flex flex-wrap items-center gap-2 text-sm italic tracking-[0.05em] text-text-secondary">
               <span>Olivia Rodrigo</span>
-              <span className="h-1 w-1 rounded-full bg-accent-light" />
+              <span className="h-1.5 w-1.5 bg-accent-primary" />
               <span>{song.album}</span>
             </div>
           </div>
 
           {shouldShowLyrics ? (
-            <div className="mt-5 rounded-quote border border-border-soft bg-bg-quote px-4 py-3.5">
+            <div className="mt-5 rounded-quote border-[1.5px] border-border-soft bg-accent-bright px-4 py-3.5">
               <p className="text-[1.02rem] italic leading-6.5 text-text-primary">
                 “{song.lyricsEn}”
               </p>
@@ -72,7 +72,7 @@ export function SongCard({ song, stage, locale = "zh" }: SongCardProps) {
 
           <div className="mt-auto pt-6">
             <span className="soft-divider" />
-            <p className="mt-4 max-w-[18rem] text-[1.03rem] italic leading-6.5 text-accent-primary">
+            <p className="mt-4 max-w-[18rem] text-[1.03rem] italic leading-6.5 text-text-secondary">
               {song.philosophyEn}
             </p>
           </div>

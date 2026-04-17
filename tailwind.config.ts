@@ -32,10 +32,10 @@ const config: Config = {
         },
       },
       borderRadius: {
-        card: "24px",
-        quote: "16px",
+        card: "14px",
+        quote: "12px",
         pill: "9999px",
-        soft: "12px",
+        soft: "10px",
       },
       boxShadow: {
         card: "var(--shadow-card)",

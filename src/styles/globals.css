@@ -3,21 +3,21 @@
 @tailwind utilities;
 
 :root {
-  --bg-primary: #2a1b3d;
-  --bg-card: #f0e6f5;
-  --bg-card-tint: #ede4f2;
-  --bg-quote: #e8dff0;
-  --text-primary: #2a1b3d;
-  --text-secondary: #5f4b74;
-  --text-tertiary: #8c74a3;
-  --text-on-dark: #f0e6f5;
-  --accent-primary: #6b2d8c;
-  --accent-light: #d4a5e8;
-  --accent-bright: #e8dff0;
-  --border-soft: rgba(107, 45, 140, 0.16);
-  --border-medium: rgba(107, 45, 140, 0.28);
-  --shadow-card: 0 18px 42px rgba(12, 4, 25, 0.28);
-  --shadow-card-hover: 0 24px 50px rgba(12, 4, 25, 0.34);
+  --bg-primary: #f4bfd4;
+  --bg-card: #ffffff;
+  --bg-card-tint: #ffffff;
+  --bg-quote: #ffffff;
+  --text-primary: #3a2831;
+  --text-secondary: #6b555d;
+  --text-tertiary: #8b717a;
+  --text-on-dark: #ffffff;
+  --accent-primary: #b86c8e;
+  --accent-light: #e8ced8;
+  --accent-bright: #fff6fa;
+  --border-soft: rgba(58, 40, 49, 0.78);
+  --border-medium: rgba(58, 40, 49, 0.78);
+  --shadow-card: 4px 4px 0 0 #c796aa;
+  --shadow-card-hover: 3px 3px 0 0 #b9899b;
 }
 
 * {
@@ -32,7 +32,7 @@ body {
   margin: 0;
   min-height: 100vh;
   background: var(--bg-primary);
-  color: var(--text-on-dark);
+  color: var(--text-primary);
   font-family:
     "Noto Serif SC",
     "Source Han Serif SC",
@@ -58,7 +58,7 @@ select {
 }
 
 ::selection {
-  background: rgba(179, 136, 204, 0.35);
+  background: rgba(58, 40, 49, 0.14);
 }
 
 @layer components {
@@ -69,27 +69,26 @@ select {
   }
 
   .surface-card {
-    @apply rounded-card border border-border-soft bg-bg-card shadow-card;
+    @apply rounded-card border-[1.5px] border-border-soft bg-bg-card shadow-card;
   }
 
   .soft-divider {
-    @apply h-px w-12 rounded-full bg-accent-light;
-    opacity: 0.8;
+    @apply h-px w-12 bg-accent-primary;
   }
 
   .kicker {
-    @apply text-sm italic tracking-[0.08em] text-text-secondary;
+    @apply text-sm tracking-[0.08em] text-text-secondary;
   }
 
   .eyebrow {
-    @apply text-[0.72rem] uppercase tracking-[0.22em] text-text-secondary;
+    @apply text-[0.66rem] font-semibold uppercase tracking-[0.18em] text-text-secondary;
   }
 
   .info-chip {
-    @apply inline-flex items-center rounded-pill border border-border-soft bg-bg-tint px-3 py-1.5 text-[0.7rem] uppercase tracking-[0.18em] text-text-secondary;
+    @apply inline-flex items-center rounded-pill border-[1.5px] border-border-soft bg-accent-light px-3 py-1 text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-text-primary;
   }
 
   .lavender-panel {
-    @apply rounded-quote border border-border-soft bg-bg-tint;
+    @apply rounded-quote border-[1.5px] border-border-soft bg-[#fff5f9] shadow-card;
   }
 }

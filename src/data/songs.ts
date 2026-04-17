@@ -510,6 +510,27 @@ export const songs: Song[] = [
     "personalityZh": "你害怕你最好的时光已经过去了。所有人都告诉你\"会越来越好的\"，但你心里有一个声音在问：\"如果我不会呢？如果我是那种不会变得更好的人呢？\"这种害怕，也是一种爱——你太爱那个相信一切的自己了。",
     "philosophyEn": "What if this was the best version of me?",
     "neteaseUrl": "https://163cn.tv/4UiYVWl"
+  },
+  {
+    "id": "drop_dead",
+    "titleEn": "drop dead",
+    "album": "YSPS",
+    "fingerprint": {
+      "d1": 7,
+      "d2": 1,
+      "d3": 10,
+      "d4": 6,
+      "d5": 2,
+      "d6": 8,
+      "d7": 5
+    },
+    "spectrumPosition": 79,
+    "spectrumHint": "between_guts_ysps",
+    "lyricsEn": "Kiss me and I might drop dead.",
+    "lyricsZh": "",
+    "personalityZh": "你已经知道爱会让人失控，但还是愿意往前走。你不是没见过代价，只是这一次，你不想再因为清醒就错过心动。",
+    "philosophyEn": "I knew it could undo me and wanted it anyway",
+    "neteaseUrl": "#"
   }
 ];
 
